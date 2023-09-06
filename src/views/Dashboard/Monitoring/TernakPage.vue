@@ -22,7 +22,7 @@ export default {
   },
   setup() {
     const schema = y$object({
-      rf_id: y$string().required().label("RFID"),
+      rf_id: y$string().required().label("QR ID"),
       berat: y$string().nullable().label("Berat"),
       suhu: y$string().nullable().label("Suhu"),
     });
@@ -68,8 +68,8 @@ export default {
     dt: {
       column: [
         {
-          name: "id_ternak",
-          th: "ID Ternak",
+          name: "rf_id",
+          th: "QR ID Ternak",
         },
         {
           name: "bangsa",
@@ -233,7 +233,7 @@ export default {
         const tambahTernak = await this.a$ternakAdd(data);
         this.modal.addTernak = false;
         this.notify(
-          `Ternak dengan ID Ternak ${tambahTernak.id} berhasil ditambahkan`
+          `Ternak dengan QR ID Ternak ${tambahTernak.rf_id} berhasil ditambahkan`
         );
       } catch (error) {
         this.notify(error, false);
@@ -282,7 +282,7 @@ export default {
         await this.schema.validate(data);
         const editTernak = await this.a$ternakEdit(data);
         this.modal.ubahTernak = false;
-        this.notify(`Ternak dengan ID Ternak ${editTernak.id} berhasil diubah`);
+        this.notify(`Ternak dengan ID Ternak ${editTernak.rf_id} berhasil diubah`);
       } catch (error) {
         this.notify(error, false);
       } finally {
@@ -302,7 +302,7 @@ export default {
         const deleteTernak = await this.a$ternakDelete(data);
         this.modal.confirm = false;
         this.notify(
-          `Ternak dengan ID Ternak ${deleteTernak.id} berhasil dihapus`
+          `Ternak dengan ID Ternak ${deleteTernak.rf_id} berhasil dihapus`
         );
       } catch (error) {
         this.notify(error, false);
@@ -483,8 +483,8 @@ export default {
                   >
                     <base-input
                       v-bind="field"
-                      placeholder="RFID dari kalung domba"
-                      label="RFID"
+                      placeholder="QR ID dari kalung domba"
+                      label="QR ID"
                       required
                     ></base-input>
                   </field-form>
@@ -720,8 +720,8 @@ export default {
                   >
                     <base-input
                       v-bind="field"
-                      placeholder="RFID dari kalung domba"
-                      label="RFID"
+                      placeholder="QR ID dari kalung domba"
+                      label="QR ID"
                       required
                     ></base-input>
                   </field-form>
@@ -1004,7 +1004,7 @@ export default {
                 <!-- RFID -->
                 <div class="row">
                   <div class="col-5">
-                    <span style="font-weight: 600">RFID</span>
+                    <span style="font-weight: 600">QR ID</span>
                   </div>
                   <div class="col">
                     :
