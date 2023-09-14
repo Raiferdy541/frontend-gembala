@@ -22,7 +22,7 @@ export default {
   },
   setup() {
     const schema = y$object({
-      rf_id: y$string().required().label("QR ID"),
+      qr_id: y$string().required().label("QR ID"),
       berat: y$string().nullable().label("Berat"),
       suhu: y$string().nullable().label("Suhu"),
     });
@@ -35,7 +35,7 @@ export default {
     // Input
     input: {
       id_ternak: null,
-      rf_id: null,
+      qr_id: null,
       image: null,
       jenis_kelamin: null,
       id_bangsa: null,
@@ -68,7 +68,7 @@ export default {
     dt: {
       column: [
         {
-          name: "rf_id",
+          name: "qr_id",
           th: "QR ID Ternak",
         },
         {
@@ -175,7 +175,7 @@ export default {
     clearInput() {
       this.input = {
         id_ternak: null,
-        rf_id: null,
+        qr_id: null,
         image: null,
         jenis_kelamin: null,
         bangsa: null,
@@ -198,7 +198,7 @@ export default {
       this.loading = true;
       try {
         const {
-          rf_id,
+          qr_id,
           // image,
           jenis_kelamin,
           bangsa,
@@ -213,7 +213,8 @@ export default {
           status_ternak,
         } = this.input;
         const data = {
-          rf_id,
+          // qr_id,
+          qr_id: qr_id ? qr_id : null,
           // image,
           jenis_kelamin: jenis_kelamin ? jenis_kelamin : null,
           id_bangsa: bangsa ? bangsa.id : null,
@@ -233,7 +234,7 @@ export default {
         const tambahTernak = await this.a$ternakAdd(data);
         this.modal.addTernak = false;
         this.notify(
-          `Ternak dengan QR ID Ternak ${tambahTernak.rf_id} berhasil ditambahkan`
+          `Ternak dengan QR ID Ternak ${tambahTernak.qr_id} berhasil ditambahkan`
         );
       } catch (error) {
         this.notify(error, false);
@@ -247,7 +248,7 @@ export default {
       try {
         const {
           id_ternak,
-          rf_id,
+          qr_id,
           // image,
           jenis_kelamin,
           bangsa,
@@ -263,7 +264,7 @@ export default {
         } = this.input;
         const data = {
           id_ternak,
-          rf_id,
+          qr_id,
           // image,
           jenis_kelamin: jenis_kelamin ? jenis_kelamin : null,
           id_bangsa: bangsa ? bangsa.id : null,
@@ -282,7 +283,7 @@ export default {
         await this.schema.validate(data);
         const editTernak = await this.a$ternakEdit(data);
         this.modal.ubahTernak = false;
-        this.notify(`Ternak dengan ID Ternak ${editTernak.rf_id} berhasil diubah`);
+        this.notify(`Ternak dengan ID Ternak ${editTernak.qr_id} berhasil diubah`);
       } catch (error) {
         this.notify(error, false);
       } finally {
@@ -302,7 +303,7 @@ export default {
         const deleteTernak = await this.a$ternakDelete(data);
         this.modal.confirm = false;
         this.notify(
-          `Ternak dengan ID Ternak ${deleteTernak.rf_id} berhasil dihapus`
+          `Ternak dengan ID Ternak ${deleteTernak.qr_id} berhasil dihapus`
         );
       } catch (error) {
         this.notify(error, false);
@@ -337,7 +338,7 @@ export default {
       await this.a$statusTernak().catch((error) => this.notify(error, false));
       const {
         id_ternak,
-        rf_id,
+        qr_id,
         image,
         jenis_kelamin,
         bangsa,
@@ -356,7 +357,7 @@ export default {
       } = row;
       this.input = {
         id_ternak,
-        rf_id,
+        qr_id,
         jenis_kelamin,
         bangsa: {
           id: bangsa ? bangsa.id_bangsa : null,
@@ -477,9 +478,9 @@ export default {
                 <div class="col-6">
                   <field-form
                     v-slot="{ field }"
-                    v-model="input.rf_id"
+                    v-model="input.qr_id"
                     type="text"
-                    name="rf_id"
+                    name="qr_id"
                   >
                     <base-input
                       v-bind="field"
@@ -714,9 +715,9 @@ export default {
                 <div class="col-6">
                   <field-form
                     v-slot="{ field }"
-                    v-model="input.rf_id"
+                    v-model="input.qr_id"
                     type="text"
-                    name="rf_id"
+                    name="qr_id"
                   >
                     <base-input
                       v-bind="field"
@@ -1009,7 +1010,7 @@ export default {
                   <div class="col">
                     :
                     <span style="font-weight: 300">
-                      {{ infoTernak.rf_id }}</span
+                      {{ infoTernak.qr_id }}</span
                     >
                   </div>
                 </div>

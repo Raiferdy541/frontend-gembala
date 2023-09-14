@@ -151,7 +151,7 @@ export default {
               </div>
               <div class="col">
                 :
-                <span style="font-weight: 300"> {{ infoTernak.rf_id }}</span>
+                <span style="font-weight: 300"> {{ infoTernak.qr_id }}</span>
               </div>
             </div>
 

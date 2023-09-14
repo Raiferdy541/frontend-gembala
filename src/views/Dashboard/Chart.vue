@@ -341,6 +341,33 @@ export default {
                     </router-link>
                   </base-button>
                 </div>
+                <div class="col-0 mb-3">
+                  <base-button
+                    type="secondary"
+                    class="btn-md"
+                    style="width: 100%"
+                  >
+                    <router-link to="/fase/fattening">
+                      <div class="row">
+                        <div
+                          class="col-6 text-success text-left"
+                          style="font-family: inherit"
+                        >
+                          Fase Fattening
+                        </div>
+                        <div
+                          class="col-3 text-success font-weight-bolder"
+                          style="font-size: x-large"
+                        >
+                          {{
+                            g$totalByFase[6] ? g$totalByFase[0].total_ternak : 0
+                          }}
+                        </div>
+                        <div class="col-3 text-success">Ekor</div>
+                      </div>
+                    </router-link>
+                  </base-button>
+                </div>
               </div>
             </div>
           </card-comp>

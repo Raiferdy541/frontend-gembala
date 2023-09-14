@@ -86,7 +86,7 @@ const useAuthStore = defineStore({
         await s$auth.forgotPassword(request);
         return "Password baru dikirim ke email anda!";
       } catch ({ error, message }) {
-        throw (error || message) ?? "Gagal melakuka reset password!";
+        throw (error || message) ?? "Gagal melakukan reset password!";
       }
     },
   },

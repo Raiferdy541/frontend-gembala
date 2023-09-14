@@ -36,13 +36,14 @@ export default {
     dt: {
       column: [
         {
-          name: "rf_id",
-          th: "QR ID Ternak",
-        },  
-        {
           name: "id_ternak",
           th: "ID Indukan",
         },
+        {
+          name: "qr_id",
+          th: "QR ID Ternak",
+          // render: ({ qr_id }) => qr_id ? qr_id.qr_id : null,
+        },  
         {
           name: "bangsa",
           th: "Bangsa",
