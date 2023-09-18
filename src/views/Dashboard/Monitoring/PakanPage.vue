@@ -51,6 +51,11 @@ export default {
           color: "danger",
           event: "hapus-pakan",
         },
+        {
+          text: "Pembukuan Pakan",
+          color: "green",
+          event: "pembukuan-pakan",
+        },
       ],
     },
   }),
@@ -200,6 +205,11 @@ export default {
         <router-link to="bahan-pakan" class="nav-item">
           <base-button type="success1" class="btn-lg text-white">
             Daftar Bahan Pakan
+          </base-button>
+        </router-link>
+        <router-link to="pembukuan-pakan" class="nav-item">
+          <base-button type="secondary" class="btn-lg text-dark">
+            Pembukuan Pakan
           </base-button>
         </router-link>
       </nav>

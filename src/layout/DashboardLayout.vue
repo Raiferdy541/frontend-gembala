@@ -112,6 +112,12 @@
               path: '/fase/lepas-sapih',
             }"
           />
+          <sidebar-item
+            :link="{
+              name: 'Fattening',
+              path: '/fase/fattening',
+            }"
+          />
         </sidebar-item>
         <div class="dropdown-divider" />
 

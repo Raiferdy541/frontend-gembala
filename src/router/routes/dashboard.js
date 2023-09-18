@@ -300,6 +300,26 @@ const dashboardRoutes = [
           import("@/views/Dashboard/Fase/LepasSapih/LK_LepasSapih.vue"),
         meta: { requiresAuth: true },
       },
+      {
+        path: "fattening",
+        name: "Summary Fattening",
+        component: () =>
+          import("@/views/Dashboard/Fase/Fattening/SummaryFattening.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+      path: "fattening/data-fattening",
+        name: "Fase Fattening",
+        component: () =>
+          import("@/views/Dashboard/Fase/Fattening/Fattening.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "fattening/sedang-fattening",
+        name: "Data Fattening",
+        component: () => import("@/views/Dashboard/Fase/Fattening/SedangFattening.vue"),
+        meta: { requiresAuth: true },
+      },
     ],
   },
   {

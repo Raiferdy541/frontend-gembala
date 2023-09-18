@@ -92,22 +92,14 @@ const u$perkawinan = defineStore({
 
   getters: {
     g$listPerkawinan: (state) => state.perkawinan,
-    g$sedangKawin: (state) => state.sedangKawin,
-    g$statusPerkawinan: (state) => state.statusPerkawinan,
-    g$listIndukan: (state) => state.indukan,
-    g$listPejantan: (state) => state.pejantan,
     g$kandang: (state) => state.kandang,
     g$byPopulasi: (state) => ({
-      categories: ["Total", "Jantan", "Betina"],
+      categories: ["Total"],
       series: [
         {
           name: "Populasi",
           color: "#006329",
-          data: [
-            state.populasi.total,
-            state.populasi.jantan,
-            state.populasi.betina,
-          ],
+          data: [state.populasi.total],
         },
       ],
     }),

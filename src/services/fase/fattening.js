@@ -1,15 +1,16 @@
+// frontend/service/fattening.js
 import { baseApi } from "@/services/api";
 import { subApiUrl } from "@/utils/constant";
 
 const { api } = subApiUrl;
 
-const list = () => baseApi.get(`${api}/main_ternak`);
+//list new fattening (??)
+const listMainTernak = () => baseApi.get(`${api}/fattening/main_ternak`); 
+const create = (req) => baseApi.post(`${api}/fattening/main_ternak`, req);
+const edit = (req) => baseApi.put(`${api}/fattening/main_ternak`, req); 
+const remove = (req) => baseApi.delete(`${api}/fattening/main_ternak`, req);
 
-// Summary
-// const listKebuntingan = () => baseApi.get(`${api}/kebuntingan/all-ternak`);
+//Summary Fattening (??)
+const listTernak = () => baseApi.get(`${api}/fattening/ternak`);
 
-
-// const sedangBunting = () => baseApi.get(`${api}/kebuntingan/ternak`);
-// const setAbortus = (req) => baseApi.post(`${api}/kebuntingan/set-abortus`, req);
-
-export { list };
+export { listTernak, listMainTernak, create, edit, remove };
