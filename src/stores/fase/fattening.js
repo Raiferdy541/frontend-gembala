@@ -5,14 +5,16 @@ const u$fattening = defineStore({
   id: "fattening",
   state: () => ({
     fattening: [],
+    total:[],
     sedangFattening: [],
     pakan:[],
     kandang: [],
     populasi: [],
+    bobot: [],
   }),
   actions: {
     //List fattening (??)
-    async a$fatteningListMain() {
+    async a$fatteningList() {
       try {
         const { data } = await s$fattening.listMainTernak();
         this.fattening = data.list;
@@ -23,14 +25,14 @@ const u$fattening = defineStore({
     },
 
     //list Summary Fattening (??)
-    async a$listTernak() {
+    async a$listFattening() {
       try {
         const { data } = await s$fattening.listTernak();
-        // this.fattening = data.ternak.list;
-        // this.kandang = data.kandang.list;
-        // this.populasi = data.populasi;
+        this.total = data.total;
+        this.populasi = data;
+        this.kandang = data.total_per_kandang;
         this.fattening = data.list;
-        // console.log(data);
+        console.log(this.fattening);
       } catch ({ error }) {
         this.fattening = [];
         throw error;
@@ -68,10 +70,13 @@ const u$fattening = defineStore({
   },
 
   getters: {
-    g$listTernak: (state) => state.fattening,
-    // g$listMainTernak: (state) => state.fattening,
+    g$fattening: (state) => state.fattening,
     g$kandang: (state) => state.kandang,
+    g$bobot: (state) => state.bobot,
     g$pakan: (state) => state.pakan,
+    g$total: (state) => state.total,
+    g$ternakBetina: (state) => state.ternakBetina,
+    g$ternakJantan: (state) => state.ternakJantan,
     g$byPopulasi: (state) => ({
       categories: ["Total", "Jantan", "Betina"],
       series: [

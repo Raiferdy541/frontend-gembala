@@ -93,11 +93,16 @@ export default {
           color: "danger",
           event: "hapus-pakan",
         },
+        {
+          text: "Pembukuan",
+          color: "submit",
+          event: "pembukuan-pakan",
+        },
       ],
     },
   }),
   computed: {
-    ...mapState(d$pakan, ["g$pakanList", "g$pakanDetail"]),
+    ...mapState(d$pakan, ["g$pakanList", "g$pakanDetail", "g$detailPembukuanPakan"]),
     ...mapState(d$dropdown, ["g$ddKeteranganTambahPakan"]),
     modals() {
       return Object.values(this.modal).includes(true);
@@ -258,6 +263,20 @@ export default {
         this.notify(error, false);
       }
     },
+    async triggerPembukuanPakan(row) {
+      try {
+        const { id_jenis_pakan } = row;
+        router.push({
+          name: "Pembukuan Pakan",
+          params: {
+            id: id_jenis_pakan,
+          },
+        });
+      } catch (error) {
+        this.clearInput();
+        this.notify(error, false);
+      }
+    },
   },
 };
 </script>
@@ -276,6 +295,7 @@ export default {
             Daftar Bahan Pakan
           </base-button>
         </router-link>
+        
       </nav>
       <div class="row align-items-center">
         <div class="col-auto">
@@ -300,6 +320,7 @@ export default {
         @ubah-pakan="triggerEditModal"
         @hapus-pakan="triggerDelete"
         @detail-pakan="triggerDetail"
+       @pembukuan-pakan="triggerPembukuanPakan"
       />
     </template>
 

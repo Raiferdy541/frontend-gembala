@@ -41,11 +41,25 @@ const dashboardRoutes = [
           import("@/views/Dashboard/Monitoring/JenisPakanPage.vue"),
         meta: { requiresAuth: true },
       },
+      // {
+      //   path: "data-pakan/pembukuan-pakan",
+      //   name: "Pembukuan Pakan",
+      //   component: () =>
+      //     import("@/views/Dashboard/Monitoring/Pembukuan.vue"),
+      //   meta: { requiresAuth: true },
+      // },
       {
         path: "detail-pakan/:id",
         name: "Detail Pakan",
         component: () =>
           import("@/views/Dashboard/Monitoring/JenisPakanDetail.vue"),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "data-pakan/pembukuan-pakan/:id",
+        name: "Pembukuan Pakan",
+        component: () =>
+          import("@/views/Dashboard/Monitoring/PembukuanPakanDetail.vue"),
         meta: { requiresAuth: true },
       },
       {
@@ -308,16 +322,10 @@ const dashboardRoutes = [
         meta: { requiresAuth: true },
       },
       {
-      path: "fattening/data-fattening",
-        name: "Fase Fattening",
+        path: "fattening/data-fattening",
+        name: "Fattening",
         component: () =>
           import("@/views/Dashboard/Fase/Fattening/Fattening.vue"),
-        meta: { requiresAuth: true },
-      },
-      {
-        path: "fattening/sedang-fattening",
-        name: "Data Fattening",
-        component: () => import("@/views/Dashboard/Fase/Fattening/SedangFattening.vue"),
         meta: { requiresAuth: true },
       },
     ],

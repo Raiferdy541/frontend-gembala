@@ -59,7 +59,8 @@ export default {
     },
   },
   async mounted() {
-    await this.a$bahanPakanDetail(this.$route.params.id).catch((error) =>
+    await this.a$bahanPakan
+    (this.$route.params.id).catch((error) =>
       this.notify(error, false)
     );
   },

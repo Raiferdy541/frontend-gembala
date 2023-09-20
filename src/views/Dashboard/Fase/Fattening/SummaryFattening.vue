@@ -23,52 +23,49 @@ export default {
     dt: {
       column: [
         {
-          name: "id_ternak",
-          th: "ID Ternak",
-        },
-        {
           name: "qr_id",
           th: "QR ID",
         },
         {
-          name: "id_jenis_pakan",
-        th: "Jenis Pakan",
-      // render: ({ jenisPakan }) => jenisPakan.id_pakan_jenis_pakan,
-    },
-        {
-          name: "id_kandang",
           th: "Kode Kandang",
-          render: ({ kandang }) => kandang.kode_kandang,
-          
+          render: ({ kode_kandang }) => kode_kandang,
+        },
+
+        {
+          th: "Bobot",
+          render: ({ berat }) => (berat ? berat + " Kg" : null),
         },
         {
-          name: "id_bahan_pakan",
-          th: "Bahan Pakan",
-          // render: ({ kandang }) => kandang.kode_kandang,
+          th: "Bangsa",
+          render: ({ bangsa }) => bangsa,
         },
         {
-          name: "jenis_kelamin",
           th: "Jenis Kelamin",
-          // render: ({ kandang }) => kandang.kode_kandang,
+          render: ({ jenis_kelamin }) => jenis_kelamin
         },
       ],
     },
   }),
   computed: {
     ...mapState(useAuthStore, ["userInfo"]),
-    ...mapState(d$fattening, ["g$listTernak", "g$byPopulasi", "g$kandang", "g$pakan"]),
+    ...mapState(d$fattening, [
+      "g$fattening",
+      "g$byPopulasi",
+      "g$kandang",
+      "g$pakan",
+    ]),
   },
 
   async mounted() {
     try {
-      await this.a$listTernak();
+      await this.a$listFattening();
     } catch (error) {
       this.notify(error, false);
     }
   },
 
   methods: {
-    ...mapActions(d$fattening, ["a$listTernak"]),
+    ...mapActions(d$fattening, ["a$listFattening"]),
   },
 };
 </script>
@@ -84,7 +81,7 @@ export default {
           <div class="row">
             <span class="text-center m-2">
               <router-link to="/fase/fattening">
-                <base-button type="success1" class="btn-lg text-white">
+                <base-button type="success1" class:="btn-lg text-white">
                   Summary
                 </base-button>
               </router-link>
@@ -114,7 +111,7 @@ export default {
           </div>
         </div>
       </div>
-      <div class="row" v-if="g$listTernak.length">
+      <div class="row" v-if="g$fattening.length">
         <div class="col-sm-4">
           <card-comp>
             <div class="row align-items-center">
@@ -160,7 +157,7 @@ export default {
           </card-comp>
         </div>
       </div>
-      <div class="row ml-1" v-if="g$listTernak.length">
+      <div class="row ml-1" v-if="g$fattening.length">
         <h1 class="font-weight-bolder text-success">
           Daftar Ternak {{ pageTitle }}
         </h1>
@@ -168,11 +165,11 @@ export default {
     </template>
 
     <template #body>
-      <empty-result v-if="!g$listTernak.length" :text="`${pageTitle}`" />
+      <empty-result v-if="!g$fattening.length" :text="`${pageTitle}`" />
       <data-table
         v-else
         :index="true"
-        :data="g$listTernak"
+        :data="g$fattening"
         :columns="dt.column"
       />
     </template>

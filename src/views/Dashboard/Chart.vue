@@ -360,7 +360,7 @@ export default {
                           style="font-size: x-large"
                         >
                           {{
-                            g$totalByFase[6] ? g$totalByFase[0].total_ternak : 0
+                            g$totalByFase[6] ? g$totalByFase[6].total_ternak : 0
                           }}
                         </div>
                         <div class="col-3 text-success">Ekor</div>
